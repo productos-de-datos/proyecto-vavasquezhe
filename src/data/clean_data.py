@@ -1,4 +1,7 @@
-def clean_data():
+from numpy import column_stack
+
+
+def clean_data(parent_dir):
     """Realice la limpieza y transformación de los archivos CSV.
 
     Usando los archivos data_lake/raw/*.csv, cree el archivo data_lake/cleansed/precios-horarios.csv.
@@ -12,10 +15,23 @@ def clean_data():
 
 
     """
-    raise NotImplementedError("Implementar esta función")
+    ##raise NotImplementedError("Implementar esta función")
+    import pandas as pd
+    import glob
+    files = [i.split("/")[-1] for i in glob.glob(parent_dir+"/data_lake/raw/*.csv*")]
+    df_final = pd.DataFrame(columns = ['Fecha','hora','precio'])
+
+    for i in files:
+        df = pd.read_csv(parent_dir + '/data_lake/raw/{}'.format(i)) 
+        df_melt = pd.melt(df, id_vars=['Fecha'], value_vars=df.columns[1:], var_name='hora', value_name='precio')
+        df_final = df_final.append(df_melt, ignore_index=True)
+
+    df_final.columns = ['fecha', 'hora', 'precio']
+    return df_final 
+    #df_final.to_csv(parent_dir+'/data_lake/cleansed/precios-horarios.csv',index=False)
 
 
 if __name__ == "__main__":
     import doctest
-
+    ##clean_data('/Users/valentinavasquezhernandez/Desktop/proyecto-vavasquezhe-1/src')
     doctest.testmod()

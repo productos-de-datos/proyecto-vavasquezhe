@@ -5,7 +5,7 @@ Módulo de ingestión de datos.
 """
 
 
-def ingest_data():
+def ingest_data(parent_dir):
     """Ingeste los datos externos a la capa landing del data lake.
 
     Del repositorio jdvelasq/datalabs/precio_bolsa_nacional/xls/ descarge los
@@ -13,10 +13,20 @@ def ingest_data():
     descarga debe realizarse usando únicamente funciones de Python.
 
     """
-    raise NotImplementedError("Implementar esta función")
+    #raise NotImplementedError("Implementar esta función")
 
+    import wget
+    url_xlsx = 'https://github.com/jdvelasq/datalabs/blob/master/datasets/precio_bolsa_nacional/xls/{}.xlsx?raw=true'
+    url_xls = 'https://github.com/jdvelasq/datalabs/blob/master/datasets/precio_bolsa_nacional/xls/{}.xls?raw=true'
+    xlsx =  list(range(1995, 2016)) + list(range(2018, 2022))
+
+    for i in range(1995, 2022):
+        if i == 2016 or i == 2017:
+            wget.download(url_xls.format(str(i)),out = parent_dir)
+        else: 
+            wget.download(url_xlsx.format(str(i)),out = parent_dir)
 
 if __name__ == "__main__":
+    ##ingest_data('/Users/valentinavasquezhernandez/Desktop/proyecto-vavasquezhe-1/src/data_lake/landing')
     import doctest
-
     doctest.testmod()

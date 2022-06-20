@@ -1,4 +1,4 @@
-def make_features():
+def make_features(parent_dir):
     """Prepara datos para pronóstico.
 
     Cree el archivo data_lake/business/features/precios-diarios.csv. Este
@@ -12,10 +12,16 @@ def make_features():
     analizar y determinar las variables explicativas del modelo.
 
     """
-    raise NotImplementedError("Implementar esta función")
 
+    import pandas as pd
+    df = pd.read_csv(parent_dir+'/data_lake/business/precios-diarios.csv')
+    df['fecha'] =  df[['fecha']].apply(pd.to_datetime)
+    df['weekday'] = df.fecha.dt.weekday
+    df['weekday_bol'] = (df['weekday']>=5).astype(int)
+    df.to_csv(parent_dir+'/data_lake/business/features/precios-diarios.csv',index=False)
+    ##raise NotImplementedError("Implementar esta función")
 
 if __name__ == "__main__":
     import doctest
-
+    make_features('/Users/valentinavasquezhernandez/Desktop/proyecto-vavasquezhe-1/src')
     doctest.testmod()
