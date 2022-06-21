@@ -1,7 +1,7 @@
 from numpy import column_stack
 
 
-def clean_data(parent_dir):
+def clean_data():
     """Realice la limpieza y transformación de los archivos CSV.
 
     Usando los archivos data_lake/raw/*.csv, cree el archivo data_lake/cleansed/precios-horarios.csv.
@@ -18,6 +18,8 @@ def clean_data(parent_dir):
     ##raise NotImplementedError("Implementar esta función")
     import pandas as pd
     import glob
+    from create_data_lake import get_project_root 
+    parent_dir = str(get_project_root())
     files = [i.split("/")[-1] for i in glob.glob(parent_dir+"/data_lake/raw/*.csv*")]
     df_final = pd.DataFrame(columns = ['Fecha','hora','precio'])
 
@@ -33,5 +35,4 @@ def clean_data(parent_dir):
 
 if __name__ == "__main__":
     import doctest
-    ##clean_data('/Users/valentinavasquezhernandez/Desktop/proyecto-vavasquezhe-1/src')
     doctest.testmod()

@@ -1,4 +1,9 @@
-def create_data_lake(parent_dir):
+
+def get_project_root():
+    from pathlib import Path
+    return Path(__file__).parent.parent
+
+def create_data_lake():
     """Cree el data lake con sus capas.
 
     Esta función debe crear la carpeta `data_lake` en la raiz del proyecto. El data lake contiene
@@ -20,9 +25,8 @@ def create_data_lake(parent_dir):
     ```
 
     """
-    #raise NotImplementedError("Implementar esta función")
-
     import os 
+    parent_dir = get_project_root()
 
     os.mkdir(os.path.join(parent_dir, "data_lake"))
     os.mkdir(os.path.join(parent_dir, "data_lake/landing"))
@@ -36,6 +40,6 @@ def create_data_lake(parent_dir):
 
 
 if __name__ == "__main__":
-    create_data_lake('/Users/valentinavasquezhernandez/Desktop/proyecto-vavasquezhe-1/src')
     import doctest
+    create_data_lake()
     doctest.testmod()

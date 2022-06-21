@@ -14,34 +14,74 @@ En luigi llame las funciones que ya creo.
 import os
 from luigi import Task, LocalTarget
 import luigi
-import ingest_data
-import transform_data
-import clean_data
-
+from ingest_data import ingest_data
+from transform_data import transform_data
+from clean_data import clean_data
+from compute_monthly_prices import compute_monthly_prices
+from compute_daily_prices import compute_daily_prices
+import pandas as pd
 
 class ImportTransformData(Task):
     def output(self):
-        return LocalTarget('/Users/valentinavasquezhernandez/Desktop/proyecto-vavasquezhe-1/src/data_lake/cleansed/precios-horarios.csv')
+        from create_data_lake import get_project_root
+        self.root_path = str(get_project_root())
+        return LocalTarget(os.path.join(self.root_path, "data_lake/cleansed/precios-horarios.csv"))
 
     def run(self):
         try:
-            ingest_data.ingest_data('/Users/valentinavasquezhernandez/Desktop/proyecto-vavasquezhe-1/src/data_lake/landing')
+            ingest_data()
         except:
             return "Ingest Error"
 
         try:
-            transform_data.transform_data('/Users/valentinavasquezhernandez/Desktop/proyecto-vavasquezhe-1/src')
+            transform_data()
         except:
             return "Transform Error"
         
         try:
-            d = clean_data.clean_data('/Users/valentinavasquezhernandez/Desktop/proyecto-vavasquezhe-1/src')
+            d = clean_data()
             outfile = open(self.output().path, 'wb')
             d.to_csv(outfile,index=False)
+            outfile.close()
         except: 
             "Save Error"    
+
+class CleanDataMonth(Task):
+
+    def requires(self):
+        return ImportTransformData()
+
+    def output(self):
+        from create_data_lake import get_project_root
+        self.root_path = str(get_project_root())
+        return LocalTarget(os.path.join(self.root_path, "data_lake/business/precios-mensuales.csv"))
+
+    def run(self):
+        import pandas as pd
+        i = pd.read_csv(self.input().open('r'))
+        d = compute_monthly_prices(i)
+        outfile = open(self.output().path, 'wb')
+        d.to_csv(outfile,index=False)
+
+class CleanDataDay(Task):
+
+    #def requires(self):
+        #return ImportTransformData()
+
+    def output(self):
+        from create_data_lake import get_project_root
+        self.root_path = str(get_project_root())
+        return LocalTarget(os.path.join(self.root_path, "data_lake/business/precios-diarios.csv"))
+
+    def run(self):
+        import pandas as pd
+        i = pd.read_csv(ImportTransformData().open('r'))
+        d = compute_daily_prices(i)
+        outfile = open(self.output().path, 'wb')
+        d.to_csv(outfile,index=False)
         
 if __name__ == "__main__":
     import doctest
-    luigi.run(["ImportTransformData", "--local-scheduler"])
+    luigi.run(["CleanDataMonth", "--local-scheduler"])
+    luigi.run(["CleanDataDay", "--local-scheduler"])
     doctest.testmod()

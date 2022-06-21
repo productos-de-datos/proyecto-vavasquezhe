@@ -1,4 +1,4 @@
-def transform_data(parent_dir):
+def transform_data():
     """Transforme los archivos xls a csv.
 
     Transforme los archivos data_lake/landing/*.xls a data_lake/raw/*.csv. Hay
@@ -11,6 +11,8 @@ def transform_data(parent_dir):
 
     import pandas as pd
     import glob
+    from create_data_lake import get_project_root 
+    parent_dir = str(get_project_root())
     files = [i.split("/")[-1] for i in glob.glob(parent_dir+"/data_lake/landing/*.xls*")]
 
     for i in files:
@@ -24,5 +26,4 @@ def transform_data(parent_dir):
 
 if __name__ == "__main__":
     import doctest
-    transform_data('/Users/valentinavasquezhernandez/Desktop/proyecto-vavasquezhe-1/src')
     doctest.testmod()
