@@ -1,7 +1,7 @@
 
 def get_project_root():
     from pathlib import Path
-    return Path(__file__).parent.parent
+    return Path(__file__).parent.parent.parent
 
 def create_data_lake():
     """Cree el data lake con sus capas.
@@ -41,5 +41,4 @@ def create_data_lake():
 
 if __name__ == "__main__":
     import doctest
-    create_data_lake()
     doctest.testmod()

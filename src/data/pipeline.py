@@ -14,6 +14,7 @@ En luigi llame las funciones que ya creo.
 import os
 from luigi import Task, LocalTarget
 import luigi
+from create_data_lake import create_data_lake,get_project_root 
 from ingest_data import ingest_data
 from transform_data import transform_data
 from clean_data import clean_data
@@ -28,6 +29,11 @@ class ImportTransformData(Task):
         return LocalTarget(os.path.join(self.root_path, "data_lake/cleansed/precios-horarios.csv"))
 
     def run(self):
+        try:
+            create_data_lake()
+        except:
+            return "Create DataLake Error"
+
         try:
             ingest_data()
         except:
@@ -65,8 +71,8 @@ class CleanDataMonth(Task):
 
 class CleanDataDay(Task):
 
-    #def requires(self):
-        #return ImportTransformData()
+    def requires(self):
+        return ImportTransformData()
 
     def output(self):
         from create_data_lake import get_project_root
@@ -75,13 +81,20 @@ class CleanDataDay(Task):
 
     def run(self):
         import pandas as pd
-        i = pd.read_csv(ImportTransformData().open('r'))
+        i = pd.read_csv(self.input().open('r'))
         d = compute_daily_prices(i)
         outfile = open(self.output().path, 'wb')
         d.to_csv(outfile,index=False)
+
+class FinalRun(Task):
+
+    def requires(self):
+        return [
+            CleanDataMonth(),
+            CleanDataDay(),
+        ]
         
 if __name__ == "__main__":
     import doctest
-    luigi.run(["CleanDataMonth", "--local-scheduler"])
-    luigi.run(["CleanDataDay", "--local-scheduler"])
+    luigi.run(["FinalRun", "--local-scheduler"])
     doctest.testmod()
