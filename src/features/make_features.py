@@ -1,4 +1,8 @@
-def make_features(parent_dir):
+def get_project_root():
+    from pathlib import Path
+    return Path(__file__).parent.parent.parent
+
+def make_features():
     """Prepara datos para pronóstico.
 
     Cree el archivo data_lake/business/features/precios-diarios.csv. Este
@@ -14,6 +18,7 @@ def make_features(parent_dir):
     """
 
     import pandas as pd
+    parent_dir = str(get_project_root())
     df = pd.read_csv(parent_dir+'/data_lake/business/precios-diarios.csv')
     df['fecha'] =  df[['fecha']].apply(pd.to_datetime)
     df['weekday'] = df.fecha.dt.weekday
@@ -23,5 +28,5 @@ def make_features(parent_dir):
 
 if __name__ == "__main__":
     import doctest
-    make_features('/Users/valentinavasquezhernandez/Desktop/proyecto-vavasquezhe-1/src')
+    make_features()
     doctest.testmod()
