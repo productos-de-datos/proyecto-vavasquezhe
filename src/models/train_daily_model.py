@@ -24,6 +24,7 @@ def train_daily_model():
     """
 
     import pandas as pd
+    import pickle
     from sklearn.ensemble import RandomForestRegressor
     from skforecast.ForecasterAutoreg import ForecasterAutoreg
     parent_dir = str(get_project_root())
