@@ -17,6 +17,7 @@ def compute_daily_prices():
     df = pd.read_csv(parent_dir + '/data_lake/cleansed/precios-horarios.csv') 
     df_final = df.groupby(['fecha']).mean().reset_index()
     df_final.to_csv(parent_dir+'/data_lake/business/precios-diarios.csv',index=False)
+    return df_final 
 
 if __name__ == "__main__":
     import doctest

@@ -18,7 +18,6 @@ def ingest_data():
     import wget
     from create_data_lake import get_project_root 
     import os
-    os.system("pip install wget")
     url_xlsx = 'https://github.com/jdvelasq/datalabs/blob/master/datasets/precio_bolsa_nacional/xls/{}.xlsx?raw=true'
     url_xls = 'https://github.com/jdvelasq/datalabs/blob/master/datasets/precio_bolsa_nacional/xls/{}.xls?raw=true'
     xlsx =  list(range(1995, 2016)) + list(range(2018, 2022))

@@ -30,7 +30,7 @@ def clean_data():
 
     df_final.columns = ['fecha', 'hora', 'precio']
     df_final.to_csv(parent_dir+'/data_lake/cleansed/precios-horarios.csv',index=False)
-
+    return df_final
 
 if __name__ == "__main__":
     import doctest

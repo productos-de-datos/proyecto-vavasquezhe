@@ -64,8 +64,9 @@ class CleanDataMonth(Task):
 
     def run(self):
         import pandas as pd
-        i = pd.read_csv(self.input().open('r'))
-        d = compute_monthly_prices(i)
+        #i = pd.read_csv(self.input().open('r'))
+        #d = compute_monthly_prices(i)
+        d = compute_monthly_prices()
         outfile = open(self.output().path, 'wb')
         d.to_csv(outfile,index=False)
 
@@ -81,8 +82,9 @@ class CleanDataDay(Task):
 
     def run(self):
         import pandas as pd
-        i = pd.read_csv(self.input().open('r'))
-        d = compute_daily_prices(i)
+        #i = pd.read_csv(self.input().open('r'))
+        #d = compute_daily_prices(i)
+        d = compute_daily_prices()
         outfile = open(self.output().path, 'wb')
         d.to_csv(outfile,index=False)
 
