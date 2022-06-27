@@ -14,7 +14,7 @@ def ingest_data():
 
     """
     #raise NotImplementedError("Implementar esta función")
-
+    os.system("pip install wget")
     import wget
     from create_data_lake import get_project_root 
     import os
