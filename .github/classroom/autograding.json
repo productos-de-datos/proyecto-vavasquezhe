@@ -102,7 +102,7 @@
     },
     {
       "name": "Test 11",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
+      "setup": "pip3 install matplotlib sklearn skforecast pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 grader.py 11",
       "input": "",
       "output": "",
@@ -112,7 +112,7 @@
     },
     {
       "name": "Test 12",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
+      "setup": "pip3 install matplotlib sklearn skforecast pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 grader.py 12",
       "input": "",
       "output": "",
@@ -122,7 +122,7 @@
     },
     {
       "name": "Test 13",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
+      "setup": "pip3 install matplotlib sklearn skforecast pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "pylint",
       "input": "",
       "output": "",
@@ -132,7 +132,7 @@
     },
     {
       "name": "Test 14",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
+      "setup": "pip3 install matplotlib sklearn skforecast pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "pytest",
       "input": "",
       "output": "",
@@ -142,7 +142,7 @@
     },
     {
       "name": "Test 15",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
+      "setup": "pip3 install matplotlib sklearn skforecast pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 src/data/clean_data.py",
       "input": "",
       "output": "",
@@ -212,7 +212,7 @@
     },
     {
       "name": "Test 22",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd skforecast",
+      "setup": "pip3 install matplotlib sklearn skforecast pandas luigi pytest pylint glob2 openpyxl xlrd skforecast",
       "run": "python3 src/features/make_features.py",
       "input": "",
       "output": "",
@@ -222,7 +222,7 @@
     },
     {
       "name": "Test 23",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd skforecast",
+      "setup": "pip3 install matplotlib sklearn skforecast pandas luigi pytest pylint glob2 openpyxl xlrd skforecast",
       "run": "python3 src/models/make_forecasts.py",
       "input": "",
       "output": "",
@@ -232,7 +232,7 @@
     },
     {
       "name": "Test 24",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd skforecast",
+      "setup": "pip3 install matplotlib sklearn skforecast pandas luigi pytest pylint glob2 openpyxl xlrd skforecast",
       "run": "python3 src/models/train_daily_model.py",
       "input": "",
       "output": "",
