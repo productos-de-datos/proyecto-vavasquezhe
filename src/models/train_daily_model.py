@@ -42,11 +42,9 @@ def train_daily_model():
                 lags = 8
                 )
 
-    forecaster.fit(y=data_train['precio'])
-
-    save_estimator(forecaster)
-    
-
+    model = forecaster.fit(y=data_train['precio'])
+    pickle.dump(model, open("precios-diarios.pkl", "wb"))
+    #save_estimator(forecaster)
 
 if __name__ == "__main__":
     import doctest
