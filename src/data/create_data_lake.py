@@ -28,7 +28,7 @@ def create_data_lake():
     import os 
     
     parent_dir = get_project_root()
-
+    os.remove(os.path.join(parent_dir, "data_lake"))
     os.mkdir(os.path.join(parent_dir, "data_lake"))
     os.mkdir(os.path.join(parent_dir, "data_lake/landing"))
     os.mkdir(os.path.join(parent_dir, "data_lake/raw"))
@@ -42,5 +42,5 @@ def create_data_lake():
 
 if __name__ == "__main__":
     import doctest
-    create_data_lake()
+    #create_data_lake()
     doctest.testmod()
