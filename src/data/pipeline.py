@@ -29,10 +29,10 @@ class ImportTransformData(Task):
         return LocalTarget(os.path.join(self.root_path, "data_lake/cleansed/precios-horarios.csv"))
 
     def run(self):
-        try:
-            create_data_lake()
-        except:
-            return "Create DataLake Error"
+        #try:
+            #create_data_lake()
+        #except:
+            #return "Create DataLake Error"
 
         try:
             ingest_data()
@@ -45,7 +45,10 @@ class ImportTransformData(Task):
             return "Transform Error"
         
         try:
+            import os
+            import pandas as pd
             d = clean_data()
+            os.remove(os.path.join(self.root_path, "data_lake/cleansed/precios-horarios.csv"))
             outfile = open(self.output().path, 'wb')
             d.to_csv(outfile,index=False)
             outfile.close()
@@ -64,9 +67,11 @@ class CleanDataMonth(Task):
 
     def run(self):
         import pandas as pd
+        import os
         #i = pd.read_csv(self.input().open('r'))
         #d = compute_monthly_prices(i)
         d = compute_monthly_prices()
+        os.remove(os.path.join(self.root_path,  "data_lake/business/precios-mensuales.csv"))
         outfile = open(self.output().path, 'wb')
         d.to_csv(outfile,index=False)
 
@@ -82,9 +87,12 @@ class CleanDataDay(Task):
 
     def run(self):
         import pandas as pd
+        import os
         #i = pd.read_csv(self.input().open('r'))
         #d = compute_daily_prices(i)
+        
         d = compute_daily_prices()
+        os.remove(os.path.join(self.root_path, "data_lake/business/precios-diarios.csv"))
         outfile = open(self.output().path, 'wb')
         d.to_csv(outfile,index=False)
 

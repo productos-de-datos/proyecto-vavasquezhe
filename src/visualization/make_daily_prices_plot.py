@@ -25,9 +25,6 @@ def make_daily_prices_plot():
     fig_2 = plot_2.get_figure()
     fig_2.savefig(parent_dir + '/data_lake/business/reports/figures/monthly_prices.png')
 
-
-
-
 if __name__ == "__main__":
     import doctest
     make_daily_prices_plot()

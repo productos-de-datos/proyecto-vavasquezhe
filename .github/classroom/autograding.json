@@ -173,7 +173,7 @@
     {
       "name": "Test 18",
       "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
-      "run": "python3 src/data/create_data_lake.py",
+      "run": "python3 src/data/create_data_lake.py ",
       "input": "",
       "output": "",
       "comparison": "included",
