@@ -29,7 +29,7 @@ def train_daily_model():
     parent_dir = str(get_project_root())
     #raise NotImplementedError("Implementar esta función")
 
-    df = pd.read_csv(parent_dir + '/data_lake/business/features/precios-diarios.csv')
+    df = pd.read_csv(parent_dir + '/data_lake/business/features/precios_diarios.csv')
     df['fecha'] = pd.to_datetime(df['fecha'], format='%Y-%m-%d')
     df = df.set_index('fecha')
     df = df.asfreq('D')
