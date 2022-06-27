@@ -23,7 +23,7 @@ def make_features():
     df['fecha'] =  df[['fecha']].apply(pd.to_datetime)
     df['weekday'] = df.fecha.dt.weekday
     df['weekday_bol'] = (df['weekday']>=5).astype(int)
-    df.to_csv(parent_dir+'/data_lake/business/features/precios-diarios.csv',index=False)
+    df.to_csv(parent_dir+'/data_lake/business/features/precios_diarios.csv',index=False)
     ##raise NotImplementedError("Implementar esta función")
 
 if __name__ == "__main__":
