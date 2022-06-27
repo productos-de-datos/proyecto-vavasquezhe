@@ -51,7 +51,7 @@ def train_daily_model():
         #            lags = 8
         #            )
 
-    model = forecaster.fit()
+    model = forecaster.fit(disp=0)
     pickle.dump(model, open("precios-diarios.pkl", "wb"))
     #save_estimator(forecaster)
 

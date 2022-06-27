@@ -48,10 +48,9 @@ def make_forecasts():
     result = pd.concat([data_test.loc[:, ['precio']], predictions], axis=1, join="inner")
     result = result.reset_index()
     result.columns = ["fecha", "precio", "precio_pred"]
-ß
     result.to_csv(parent_dir+'/data_lake/business/forecasts/precios-diarios.csv',index=False)
 
 if __name__ == "__main__":
-    import doctestß
+    import doctest
     make_forecasts()    
     doctest.testmod()
