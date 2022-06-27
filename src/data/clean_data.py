@@ -26,11 +26,10 @@ def clean_data():
     for i in files:
         df = pd.read_csv(parent_dir + '/data_lake/raw/{}'.format(i)) 
         df_melt = pd.melt(df, id_vars=['Fecha'], value_vars=df.columns[1:], var_name='hora', value_name='precio')
-        df_final = df_final.append(df_melt, ignore_index=True)
+        df_final = pd.concat([df_final,df_melt], axis=0)
 
     df_final.columns = ['fecha', 'hora', 'precio']
-    return df_final 
-    #df_final.to_csv(parent_dir+'/data_lake/cleansed/precios-horarios.csv',index=False)
+    df_final.to_csv(parent_dir+'/data_lake/cleansed/precios-horarios.csv',index=False)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-def compute_daily_prices(df):
+def compute_daily_prices():
     """Compute los precios promedios diarios.
 
     Usando el archivo data_lake/cleansed/precios-horarios.csv, compute el prcio
@@ -14,10 +14,11 @@ def compute_daily_prices(df):
     import pandas as pd 
     from create_data_lake import get_project_root 
     parent_dir = str(get_project_root())
-    #df = pd.read_csv(parent_dir + '/data_lake/cleansed/precios-horarios.csv') 
+    df = pd.read_csv(parent_dir + '/data_lake/cleansed/precios-horarios.csv') 
     df_final = df.groupby(['fecha']).mean().reset_index()
     return df_final
 
 if __name__ == "__main__":
     import doctest
+    compute_daily_prices()
     doctest.testmod()

@@ -1,4 +1,4 @@
-def compute_monthly_prices(df):
+def compute_monthly_prices():
     """Compute los precios promedios mensuales.
 
     Usando el archivo data_lake/cleansed/precios-horarios.csv, compute el prcio
@@ -17,7 +17,7 @@ def compute_monthly_prices(df):
     from create_data_lake import get_project_root 
     parent_dir = str(get_project_root())
 
-    #df = pd.read_csv(parent_dir + '/data_lake/cleansed/precios-horarios.csv') 
+    df = pd.read_csv(parent_dir + '/data_lake/cleansed/precios-horarios.csv') 
     #df = pd.DataFrame(df)
     df['fecha'] =  df[['fecha']].apply(pd.to_datetime)
     df['fecha'] = df['fecha'].dt.to_period('M').dt.to_timestamp()
@@ -27,4 +27,5 @@ def compute_monthly_prices(df):
 
 if __name__ == "__main__":
     import doctest
+    compute_monthly_prices()
     doctest.testmod()
