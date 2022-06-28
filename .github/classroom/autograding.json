@@ -232,7 +232,7 @@
     },
     {
       "name": "Test 24",
-      "setup": "pip3 install statsmodels matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
+      "setup": "pip3 uninstall scipy|pip3 uninstall statsmodels |pip3 install matplotlib scipy sklearn pandas statsmodels luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 src/models/train_daily_model.py",
       "input": "",
       "output": "",
