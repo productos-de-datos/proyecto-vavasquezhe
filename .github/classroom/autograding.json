@@ -222,7 +222,7 @@
     },
     {
       "name": "Test 23",
-      "setup": "pip3 install statsmodels pandas matplotlib sklearn luigi pytest pylint glob2 openpyxl xlrd skforecast",
+      "setup": "pip3 install statsmodels pandas matplotlib sklearn luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 src/models/make_forecasts.py",
       "input": "",
       "output": "",
@@ -232,7 +232,7 @@
     },
     {
       "name": "Test 24",
-      "setup": "pip3 install statsmodels matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd skforecast",
+      "setup": "pip3 install statsmodels matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 src/models/train_daily_model.py",
       "input": "",
       "output": "",

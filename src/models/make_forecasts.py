@@ -37,7 +37,7 @@ def make_forecasts():
     df = df.sort_index()
 
     data_train, data_test = test_train_datasets(df,0.25)
-    price_estimator = pickle.load(open("precios-diarios.pkl", "rb"))
+    price_estimator = pickle.load(open(parent_dir+'/src/models/precios-diarios.pkl', "rb"))
     steps = len(data_test)
     price_forecast = price_estimator.forecast(
         steps,
