@@ -22,7 +22,7 @@ def clean_data():
 
     for i in files:
         df_inicial = pd.read_csv(parent_dir + '/data_lake/raw/{}'.format(i)) 
-        df_melt = pd.melt(df-inicial, id_vars=['Fecha'], value_vars=df_inicial.columns[1:], var_name='hora', value_name='precio')
+        df_melt = pd.melt(df_inicial, id_vars=['Fecha'], value_vars=df_inicial.columns[1:], var_name='hora', value_name='precio')
         df_final = pd.concat([df_final,df_melt], axis=0)
 
     df_final.columns = ['fecha', 'hora', 'precio']
