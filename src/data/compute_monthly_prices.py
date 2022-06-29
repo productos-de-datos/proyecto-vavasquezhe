@@ -12,10 +12,10 @@ def compute_monthly_prices():
     import pandas as pd 
     from create_data_lake import get_project_root 
     parent_dir = str(get_project_root())
-    df-inicial = pd.read_csv(parent_dir + '/data_lake/cleansed/precios-horarios.csv') 
-    df-inicial['fecha'] =  df-inicial[['fecha']].apply(pd.to_datetime)
-    df-inicial['fecha'] = df-inicial['fecha'].dt.to_period('M').dt.to_timestamp()
-    df_final = df-inicial.groupby(['fecha']).mean().reset_index()
+    df_inicial = pd.read_csv(parent_dir + '/data_lake/cleansed/precios-horarios.csv') 
+    df_inicial['fecha'] =  df_inicial[['fecha']].apply(pd.to_datetime)
+    df_inicial['fecha'] = df_inicial['fecha'].dt.to_period('M').dt.to_timestamp()
+    df_final = df_inicial.groupby(['fecha']).mean().reset_index()
     df_final.to_csv(parent_dir+'/data_lake/business/precios-mensuales.csv',index=False)
     return df_final 
 

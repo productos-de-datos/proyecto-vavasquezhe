@@ -24,7 +24,7 @@ def make_features():
     df['weekday'] = df.fecha.dt.weekday
     df['weekday_bol'] = (df['weekday']>=5).astype(int)
     df.to_csv(parent_dir+'/data_lake/business/features/precios_diarios.csv',index=False)
-    ##raise NotImplementedError("Implementar esta función")
+    return True
 
 if __name__ == "__main__":
     import doctest

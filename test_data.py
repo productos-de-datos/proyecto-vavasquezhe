@@ -1,6 +1,6 @@
 #from src.data.create_data_lake import create_data_lake
-from src.models.train_daily_model import train_daily_model
+from src.features.make_features import make_features
 
 def test_create_data_lake():
-    d = train_daily_model()
+    d = make_features()
     assert  d == True 
