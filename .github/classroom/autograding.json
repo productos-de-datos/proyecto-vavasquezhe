@@ -223,7 +223,7 @@
     {
       "name": "Test 23",
       "setup": "pip3 install pandas matplotlib sklearn luigi pytest pylint glob2 openpyxl xlrd statsmodels",
-      "run": "python3 src/models/train_daily_model.py",
+      "run": "python3 src/models/make_forecasts.py",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -233,7 +233,7 @@
     {
       "name": "Test 24",
       "setup": "pip3 install matplotlib sklearn pandas statsmodels luigi",
-      "run": "python3 src/models/make_forecasts.py",
+      "run": "rm -rf src/models/precios-diarios.pkl | python3 src/models/train_daily_model.py",
       "input": "",
       "output": "",
       "comparison": "included",
