@@ -26,17 +26,13 @@ def train_daily_model():
     import pandas as pd
     import pickle
     import statsmodels.api as sm
-    #from sklearn.ensemble import RandomForestRegressor
-    #from skforecast.ForecasterAutoreg import ForecasterAutoreg
+
     parent_dir = str(get_project_root())
    
     df = pd.read_csv(parent_dir + '/data_lake/business/features/precios_diarios.csv')
     df['fecha'] = pd.to_datetime(df['fecha'], format='%Y-%m-%d')
     df['weekday'] = pd.to_numeric(df['weekday'])
-    df = df.set_index('fecha')
-    df = df.asfreq('D')
-    df = df.sort_index()
-
+    df = df.set_index('fecha').asfreq('D').sort_index()
     data_train, data_test = test_train_datasets(df,0.25)
 
     forecaster = sm.tsa.statespace.SARIMAX(
@@ -46,16 +42,10 @@ def train_daily_model():
         enforce_invertibility=False,
         )
 
-        #forecaster = ForecasterAutoreg(
-        #            regressor = RandomForestRegressor(random_state=123),
-        #            lags = 8
-        #            )
-
     model = forecaster.fit(disp=0)
     pickle.dump(model, open(parent_dir + '/src/models/precios-diarios.pkl', "wb"))
     return True
-    #save_estimator(forecaster)
-
+    
 if __name__ == "__main__":
     import doctest
     train_daily_model()
