@@ -212,7 +212,7 @@
     },
     {
       "name": "Test 22",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrds tatsmodels",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd statsmodels",
       "run": "python3 src/features/make_features.py",
       "input": "",
       "output": "",
