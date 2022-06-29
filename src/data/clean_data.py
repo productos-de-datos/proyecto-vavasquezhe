@@ -12,10 +12,7 @@ def clean_data():
     * precio: precio de la electricidad en la bolsa nacional
 
     Este archivo contiene toda la información del 1997 a 2021.
-
-
     """
-    ##raise NotImplementedError("Implementar esta función")
     import pandas as pd
     import glob
     from create_data_lake import get_project_root 
@@ -24,8 +21,8 @@ def clean_data():
     df_final = pd.DataFrame(columns = ['Fecha','hora','precio'])
 
     for i in files:
-        df = pd.read_csv(parent_dir + '/data_lake/raw/{}'.format(i)) 
-        df_melt = pd.melt(df, id_vars=['Fecha'], value_vars=df.columns[1:], var_name='hora', value_name='precio')
+        df-inicial = pd.read_csv(parent_dir + '/data_lake/raw/{}'.format(i)) 
+        df_melt = pd.melt(df-inicial, id_vars=['Fecha'], value_vars=df-inicial.columns[1:], var_name='hora', value_name='precio')
         df_final = pd.concat([df_final,df_melt], axis=0)
 
     df_final.columns = ['fecha', 'hora', 'precio']

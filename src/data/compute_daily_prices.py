@@ -10,12 +10,11 @@ def compute_daily_prices():
     * precio: precio promedio diario de la electricidad en la bolsa nacional
 
     """
-    ##raise NotImplementedError("Implementar esta función")
     import pandas as pd 
     from create_data_lake import get_project_root 
     parent_dir = str(get_project_root())
-    df = pd.read_csv(parent_dir + '/data_lake/cleansed/precios-horarios.csv') 
-    df_final = df.groupby(['fecha']).mean().reset_index()
+    df-inicial = pd.read_csv(parent_dir + '/data_lake/cleansed/precios-horarios.csv') 
+    df_final = df-inicial.groupby(['fecha']).mean().reset_index()
     df_final.to_csv(parent_dir+'/data_lake/business/precios-diarios.csv',index=False)
     return df_final 
 

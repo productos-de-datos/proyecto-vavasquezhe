@@ -133,7 +133,7 @@
     {
       "name": "Test 14",
       "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
-      "run": "pytest test_data.py",
+      "run": " rm -rf data_lake | pytest test_data.py",
       "input": "",
       "output": "",
       "comparison": "included",
