@@ -38,6 +38,7 @@ def create_data_lake():
     os.mkdir(os.path.join(parent_dir, "data_lake/business/features"))
     os.mkdir(os.path.join(parent_dir, "data_lake/business/forecasts"))
     os.mkdir(os.path.join(parent_dir, "data_lake/business/reports/figures"))
+    return True 
 
 
 if __name__ == "__main__":
