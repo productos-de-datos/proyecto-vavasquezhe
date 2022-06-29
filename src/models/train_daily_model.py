@@ -53,6 +53,7 @@ def train_daily_model():
 
     model = forecaster.fit(disp=0)
     pickle.dump(model, open(parent_dir + '/src/models/precios-diarios.pkl', "wb"))
+    return True
     #save_estimator(forecaster)
 
 if __name__ == "__main__":

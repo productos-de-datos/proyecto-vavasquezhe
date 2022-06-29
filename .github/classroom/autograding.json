@@ -123,7 +123,7 @@
     {
       "name": "Test 13",
       "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
-      "run": "pylint src/data",
+      "run": "pylint src/models",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -133,7 +133,7 @@
     {
       "name": "Test 14",
       "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
-      "run": " rm -rf data_lake | pytest test_data.py",
+      "run": "rm -rf src/models/precios-diarios.pkl | pytest test_data.py",
       "input": "",
       "output": "",
       "comparison": "included",
