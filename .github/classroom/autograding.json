@@ -2,7 +2,7 @@
   "tests": [
     {
       "name": "Test 01",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint openpyxl xlrd",
       "run": "python3 grader.py 01",
       "input": "",
       "output": "",
@@ -12,7 +12,7 @@
     },
     {
       "name": "Test 02",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint wget glob2 openpyxl xlrd",
       "run": "python3 grader.py 02",
       "input": "",
       "output": "",
@@ -22,7 +22,7 @@
     },
     {
       "name": "Test 03",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint openpyxl xlrd",
       "run": "python3 grader.py 03",
       "input": "",
       "output": "",
@@ -32,7 +32,7 @@
     },
     {
       "name": "Test 04",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 grader.py 04",
       "input": "",
       "output": "",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Test 05",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 grader.py 05",
       "input": "",
       "output": "",
@@ -52,7 +52,7 @@
     },
     {
       "name": "Test 06",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 grader.py 06",
       "input": "",
       "output": "",
@@ -62,7 +62,7 @@
     },
     {
       "name": "Test 07",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 grader.py 07",
       "input": "",
       "output": "",
@@ -72,7 +72,7 @@
     },
     {
       "name": "Test 08",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 grader.py 08",
       "input": "",
       "output": "",
@@ -82,7 +82,7 @@
     },
     {
       "name": "Test 09",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 grader.py 09",
       "input": "",
       "output": "",
@@ -92,7 +92,7 @@
     },
     {
       "name": "Test 10",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 grader.py 10",
       "input": "",
       "output": "",
@@ -102,7 +102,7 @@
     },
     {
       "name": "Test 11",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd statsmodels",
       "run": "python3 grader.py 11",
       "input": "",
       "output": "",
@@ -112,7 +112,7 @@
     },
     {
       "name": "Test 12",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd statsmodels",
       "run": "python3 grader.py 12",
       "input": "",
       "output": "",
@@ -122,8 +122,8 @@
     },
     {
       "name": "Test 13",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
-      "run": "pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
+      "run": "pylint src/features/make_features.py",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -132,8 +132,8 @@
     },
     {
       "name": "Test 14",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
-      "run": "pytest",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
+      "run": "rm -rf data_lake/business/features/precios_diarios.csv | pytest test_data.py",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -142,7 +142,7 @@
     },
     {
       "name": "Test 15",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 src/data/clean_data.py",
       "input": "",
       "output": "",
@@ -152,7 +152,7 @@
     },
     {
       "name": "Test 16",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 src/data/compute_daily_prices.py",
       "input": "",
       "output": "",
@@ -162,7 +162,7 @@
     },
     {
       "name": "Test 17",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 src/data/compute_monthly_prices.py",
       "input": "",
       "output": "",
@@ -172,8 +172,8 @@
     },
     {
       "name": "Test 18",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
-      "run": "python3 src/data/create_data_lake.py",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
+      "run": "rm -rf data_lake | python3 src/data/create_data_lake.py ",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -182,7 +182,7 @@
     },
     {
       "name": "Test 19",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 src/data/ingest_data.py",
       "input": "",
       "output": "",
@@ -192,7 +192,7 @@
     },
     {
       "name": "Test 20",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 src/data/pipeline.py",
       "input": "",
       "output": "",
@@ -202,7 +202,7 @@
     },
     {
       "name": "Test 21",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 src/data/transform_data.py",
       "input": "",
       "output": "",
@@ -212,7 +212,7 @@
     },
     {
       "name": "Test 22",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd statsmodels",
       "run": "python3 src/features/make_features.py",
       "input": "",
       "output": "",
@@ -222,7 +222,7 @@
     },
     {
       "name": "Test 23",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install pandas matplotlib sklearn luigi pytest pylint glob2 openpyxl xlrd statsmodels",
       "run": "python3 src/models/make_forecasts.py",
       "input": "",
       "output": "",
@@ -232,8 +232,8 @@
     },
     {
       "name": "Test 24",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
-      "run": "python3 src/models/train_daily_data.py",
+      "setup": "pip3 install matplotlib sklearn pandas statsmodels luigi",
+      "run": "rm -rf src/models/precios-diarios.pkl | python3 src/models/train_daily_model.py",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -242,7 +242,7 @@
     },
     {
       "name": "Test 25",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint glob2 openpyxl xlrd",
       "run": "python3 src/visualization/make_daily_prices_plot.py",
       "input": "",
       "output": "",

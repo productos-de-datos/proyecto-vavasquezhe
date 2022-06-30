@@ -1,3 +1,8 @@
+
+def get_project_root():
+    from pathlib import Path
+    return Path(__file__).parent.parent.parent
+
 def create_data_lake():
     """Cree el data lake con sus capas.
 
@@ -19,12 +24,24 @@ def create_data_lake():
 
     ```
 
-
     """
-    raise NotImplementedError("Implementar esta función")
+    import os 
+    
+    parent_dir = get_project_root()
+    #os.remove(os.path.join(parent_dir, "data_lake"))
+    os.mkdir(os.path.join(parent_dir, "data_lake"))
+    os.mkdir(os.path.join(parent_dir, "data_lake/landing"))
+    os.mkdir(os.path.join(parent_dir, "data_lake/raw"))
+    os.mkdir(os.path.join(parent_dir, "data_lake/cleansed"))
+    os.mkdir(os.path.join(parent_dir, "data_lake/business"))
+    os.mkdir(os.path.join(parent_dir, "data_lake/business/reports"))
+    os.mkdir(os.path.join(parent_dir, "data_lake/business/features"))
+    os.mkdir(os.path.join(parent_dir, "data_lake/business/forecasts"))
+    os.mkdir(os.path.join(parent_dir, "data_lake/business/reports/figures"))
+    return True 
 
 
 if __name__ == "__main__":
     import doctest
-
+    create_data_lake()
     doctest.testmod()
